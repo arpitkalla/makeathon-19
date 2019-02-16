@@ -6,8 +6,8 @@ m1_in2 = 23
 m1_en = 25
 temp1=1
 
-m2_in1 = 9
-m2_in2 = 10 
+m2_in1 = 10
+m2_in2 = 9
 m2_en = 11
 temp2=1
 
