@@ -30,13 +30,13 @@ def move():
     content = request.json
     direction = content['direction']
     if direction == "forward":
-        motor_control.move_forwards()
+        motor_control.forward()
     if direction == "backward":
-        motor_control.move_backwards()
+        motor_control.backward()
     if direction == "right":
-        motor_control.move_right()
+        motor_control.right()
     if direction == "left":
-        motor_control.move_left()
+        motor_control.left()
     return "done"
 
 @app.route('/start')
