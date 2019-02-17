@@ -34,21 +34,16 @@ m2_p.start(100)
 GPIO.setup(14, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 
+def collision_avoid():
+    while True:
+        is_collision = GPIO.input(14)
+        if is_collision:
+            m1_p.ChangeDutyCycle(0)
+            m2_p.ChangeDutyCycle(0)
 
-def CollisionDetection(Thread):
-    def __init__(self):
-        Thread.__init__(self)
+thread = Thread(target=collision_avoid)
+thread.start()
 
-    def run(self):
-        while True:
-            is_collision = GPIO.input(14)
-            if is_collision:
-                m1_p.ChangeDutyCycle(0)
-                m2_p.ChangeDutyCycle(0)
-
-            
-cd_thread = CollisionDetection()
-cd_thread.start()
 
 def m1_forwards():
     GPIO.output(m1_in1,GPIO.HIGH)
