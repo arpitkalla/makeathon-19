@@ -30,13 +30,13 @@ def move():
     content = request.json
     direction = content['direction']
     if direction == "forward":
-        move_forwards()
+        motor_control.move_forwards()
     if direction == "backward":
-        move_backwards()
+        motor_control.move_backwards()
     if direction == "right":
-        move_right()
+        motor_control.move_right()
     if direction == "left":
-        move_left()
+        motor_control.move_left()
     return "done"
 
 
