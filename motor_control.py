@@ -42,6 +42,7 @@ def collision_avoid():
             m2_p.ChangeDutyCycle(0)
 
 thread = Thread(target=collision_avoid)
+thread.daemon = True
 thread.start()
 
 
