@@ -1,6 +1,7 @@
 from flask import Flask, render_template, Response, request
 from camera_pi import Camera
 import io
+import motor_control
 
 app = Flask(__name__)
 
@@ -27,7 +28,25 @@ def video_feed():
 @app.route('/move', methods=["POST"])
 def move():
     content = request.json
-    print(content['dir'])
+    direction = content['direction']
+    if direction == "forward":
+        motor_control.move_forwards()
+    if direction == "backward":
+        motor_control.move_backwards()
+    if direction == "right":
+        motor_control.move_right()
+    if direction == "left":
+        motor_control.move_left()
+    return "done"
+
+@app.route('/start')
+def start():
+    motor_control.start()
+    return "done"
+
+@app.route('/stop')
+def stop():
+    motor_control.stop()
     return "done"
 
 

@@ -46,7 +46,14 @@ class ListenThread(Thread):
       else:
         print(spoken_text)
 
-            
+def myfunc(arg1, arg2):
+   print 'In thread'
+   print 'args are', arg1, arg2
+
+thread = Thread(target=myfunc, args=(destination_name, destination_config))
+thread.start()
+
+ 
 thread = ListenThread()
 thread.start()
 
