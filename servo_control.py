@@ -13,20 +13,20 @@ GPIO.setup(m_right,GPIO.OUT)
 GPIO.setup(m_cam,GPIO.OUT)
 GPIO.setup(collision,GPIO.IN)
 
-m_left_pwm = GPIO.PWM(m_left,50)
-m_right_pwm = GPIO.PWM(m_right,50)
-m_cam_pwm = GPIO.PWM(m_cam,50)
-m_left_pwm.start(0)
-m_right_pwm.start(0)
-m_cam_pwm.start(0)
+m_left_pwm = GPIO.PWM(m_left,100)
+m_right_pwm = GPIO.PWM(m_right,100)
+m_cam_pwm = GPIO.PWM(m_cam,100)
+m_left_pwm.start(5)
+m_right_pwm.start(5)
+m_cam_pwm.start(5)
 
 STEPS=10 # the number of steps either side of nominal while True: 
 NOMINAL=7.5 # the 'zero' PWM %age is_collision = GPIO.input(collision)
 RANGE=1.0   # the maximum variation %age above/below NOMINAL        if not is_collision:
 
 def collision_avoid():
-            m_left_pwm.ChangeDutyCycle(0)
-            m_cam_pwm.ChangeDutyCycle(0)
+        m_left_pwm.ChangeDutyCycle(0)
+        m_cam_pwm.ChangeDutyCycle(0)
 
 #thread = Thread(target=collision_avoid)
 #thread.daemon = True
@@ -41,13 +41,17 @@ def set_angle(angle):
 
 def forward():
 	print("forward")
-	direction = -1 
-	for step in list(range(STEPS+1))+list(range(STEPS-1,0,-1)):
-        	dutycycle = NOMINAL + direction*RANGE*step/STEPS
-        	print direction, step, dutycycle
-		m_left_pwm.ChangeDutyCycle(dutycycle)
-		m_right_pwm.ChangeDutyCycle(dutycycle)
-            	sleep(2)
+	m_left_pwm.ChangeDutyCycle(2.5)
+	m_right_pwm.ChangeDutyCycle(2.5)
+	sleep(5)
+	m_left_pwm.ChangeDutyCycle(11.5) # may need to be adjusted
+	m_right_pwm.ChangeDutyCycle(11.5)
+	sleep(5)
+	m_left_pwm.ChangeDutyCycle(20.5)
+	m_right_pwm.ChangeDutyCycle(20.5)
+	sleep(5)
+	m_left_pwm.ChangeDutyCycle(11.5) # may need to be adjusted
+	m_right_pwm.ChangeDutyCycle(11.5)
 
 def backward():
 	print("backward")
