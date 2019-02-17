@@ -48,12 +48,12 @@ def angle():
 
 @app.route('/start')
 def start():
-    motor_control.start()
+    sc.start()
     return "done"
 
 @app.route('/stop')
 def stop():
-    motor_control.stop()
+    sc.stop()
     return "done"
 
 

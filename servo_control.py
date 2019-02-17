@@ -3,9 +3,9 @@ from time import sleep
 from threading import Thread
 from time import sleep
 
-m_left = 8
-m_right = 9
-m_cam = 7
+m_left = 3
+m_right = 4
+m_cam = 20
 collision = 14
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(m_left,GPIO.OUT)
@@ -53,3 +53,7 @@ def right():
 def left():
 	m_left_pwm.ChangeDutyCycle(2.5)
 	m_right_pwm.ChangeDutyCycle(7.5)
+
+def stop():
+	print("Stopping")
+	GPIO.cleanup()
