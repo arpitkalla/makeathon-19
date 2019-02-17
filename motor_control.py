@@ -28,10 +28,6 @@ GPIO.output(m2_in1,GPIO.LOW)
 GPIO.output(m2_in2,GPIO.LOW)
 m2_p=GPIO.PWM(m2_en,100)
 m2_p.start(100)
-print("\n")
-print("The default speed & direction of motor is LOW & Forward.....")
-print("r-run s-stop f-forward b-backward l-low m-medium h-high e-exit")
-print("\n")    
 
 def m1_forwards():
   GPIO.output(m1_in1,GPIO.HIGH)
@@ -69,16 +65,4 @@ def move_right():
   m2_forwards()
   print("right")
 
-while(1):
 
-  x=raw_input()
-    
-  if x=='r':
-    print("run")
-    # if obstuction detected
-    if(GPIO.input(14) == 0):
-      move_forwards()
-      print("forward")
-    else:
-      print("bluetooth warning")
-      # bluetooth
