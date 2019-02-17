@@ -40,7 +40,7 @@ def move():
     return "done"
 
 @app.route('/angle', methods=["POST"])
-def move():
+def angle():
     content = request.json
     angle = content['angle']
     sc.set_angle(int(angle))
