@@ -1,7 +1,7 @@
 from flask import Flask, render_template, Response, request
 from camera_pi import Camera
 import io
-import motor_control
+import servo_cotrol as sc
 
 app = Flask(__name__)
 
@@ -30,13 +30,13 @@ def move():
     content = request.json
     direction = content['direction']
     if direction == "forward":
-        motor_control.forward()
+        sc.forward()
     if direction == "backward":
-        motor_control.backward()
+        sc.backward()
     if direction == "right":
-        motor_control.right()
+        sc.right()
     if direction == "left":
-        motor_control.left()
+        sc.left()
     return "done"
 
 @app.route('/start')
