@@ -39,12 +39,12 @@ def CollisionDetection(Thread):
     def __init__(self):
         Thread.__init__(self)
 
-  def run(self):
-    while True:
-      is_collision = GPIO.input(14)
-      if is_collision:
-        m1_p.ChangeDutyCycle(0)
-        m2_p.ChangeDutyCycle(0)
+    def run(self):
+        while True:
+            is_collision = GPIO.input(14)
+            if is_collision:
+                m1_p.ChangeDutyCycle(0)
+                m2_p.ChangeDutyCycle(0)
 
             
 cd_thread = CollisionDetection()
