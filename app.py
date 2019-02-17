@@ -3,8 +3,6 @@ from camera_pi import Camera
 import io
 
 app = Flask(__name__)
-cam = picamera.PiCamera()
-img_stream = io.BytesIO()
 
 @app.route('/')
 def index():
