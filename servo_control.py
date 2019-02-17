@@ -10,8 +10,8 @@ collision = 14
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(m_left,GPIO.OUT)
 GPIO.setup(m_right,GPIO.OUT)
-GPIO.setup(m_cam,GPIO.IN)
-GPIO.setup(collision,GPIO.OUT)
+GPIO.setup(m_cam,GPIO.OUT)
+GPIO.setup(collision,GPIO.IN)
 
 m_left_pwm = GPIO.PWM(m_left,100)
 m_right_pwm = GPIO.PWM(m_right,100)
