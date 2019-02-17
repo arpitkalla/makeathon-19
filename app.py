@@ -39,6 +39,16 @@ def move():
         motor_control.move_left()
     return "done"
 
+@app.route('/start')
+def start():
+    motor_control.start()
+    return "done"
+
+@app.route('/stop')
+def stop():
+    motor_control.stop()
+    return "done"
+
 
 
 if __name__ == '__main__':

@@ -40,8 +40,8 @@ class ListenThread(Thread):
       mic = sr.Microphone(0)
       spoken_text = listen(r, mic)
       if (spoken_text == "start"):
-	direction = "r"
-	sentRequest = False
+        direction = "r"
+        sentRequest = False
       else:
         print(spoken_text)
 
