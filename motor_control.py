@@ -1,6 +1,4 @@
 import RPi.GPIO as GPIO          
-
-
 from time import sleep
 
 m1_in1 = 24
