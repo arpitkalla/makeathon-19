@@ -1,4 +1,4 @@
-from flask import Flask, render_template, Response
+from flask import Flask, render_template, Response, request
 from camera_pi import Camera
 import io
 
@@ -9,6 +9,8 @@ def index():
     """Video streaming home page."""
     return render_template('index.html')
 
+
+### Request to send images
 def gen(camera):
     """Video streaming generator function."""
     while True:
@@ -20,5 +22,15 @@ def gen(camera):
 @app.route('/video_feed')
 def video_feed():
     return Response(gen(Camera()),mimetype='multipart/x-mixed-replace; boundary=frame')
+
+### Controlling motors
+@app.route('/move', methods=["POST"])
+def move():
+    content = request.json
+    print(content['dir'])
+    return "done"
+
+
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True, threaded=False)
