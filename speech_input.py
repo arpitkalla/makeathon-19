@@ -39,9 +39,10 @@ class ListenThread(Thread):
       ### opens microphone and takes speech from human to convert to text
       mic = sr.Microphone(0)
       spoken_text = listen(r, mic)
+      print(spoken_text)
       if (spoken_text == "start"):
-	direction = "r"
-	sentRequest = False
+        direction = "r"
+        sentRequest = False
       else:
         print(spoken_text)
 
@@ -50,7 +51,10 @@ thread = ListenThread()
 thread.start()
 
 while True:
+  print("a")
   if direction != "" and sentRequest == False:
+    print("Sending start")
+    sentRequest = True
     requests.get(url + direction)
     
 
