@@ -6,11 +6,12 @@ from time import sleep
 m_left = 8
 m_right = 9
 m_cam = 7
-
+collision = 14
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(m_left,GPIO.OUT)
 GPIO.setup(m_right,GPIO.OUT)
-GPIO.setup(m_cam,GPIO.OUT)
+GPIO.setup(m_cam,GPIO.IN)
+GPIO.setup(collision,GPIO.OUT)
 
 m_left_pwm = GPIO.PWM(m_left,100)
 m_right_pwm = GPIO.PWM(m_right,100)
@@ -21,7 +22,7 @@ m_cam_pwm.start(5)
 
 def collision_avoid():
     while True:
-        is_collision = GPIO.input(14)
+        is_collision = GPIO.input(collision)
         if is_collision:
             m_left_pwm.ChangeDutyCycle(0)
             m_cam_pwm.ChangeDutyCycle(0)
