@@ -1,5 +1,6 @@
 from flask import Flask, render_template, Response
 import picamera
+import io
 
 app = Flask(__name__)
 cam = picamera.PiCamera()
