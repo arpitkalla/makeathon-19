@@ -1,7 +1,7 @@
 from flask import Flask, render_template, Response, request
 from camera_pi import Camera
 import io
-import servo_cotrol as sc
+import servo_control as sc
 
 app = Flask(__name__)
 
