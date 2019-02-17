@@ -24,7 +24,8 @@ def video_feed():
     return Response(gen(Camera()),mimetype='multipart/x-mixed-replace; boundary=frame')
 
 ### Controlling motors
-@app.route('/move', methods=["POST"]):
+@app.route('/move', methods=["POST"])
+def move():
     content = request.json
     print(content['dir'])
     return "done"
