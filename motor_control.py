@@ -12,7 +12,6 @@ m2_en = 11
 temp2=1
 
 GPIO.setmode(GPIO.BCM)
-
 GPIO.setup(m1_in1,GPIO.OUT)
 GPIO.setup(m1_in2,GPIO.OUT)
 GPIO.setup(m1_en,GPIO.OUT)
