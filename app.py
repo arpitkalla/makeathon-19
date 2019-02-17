@@ -39,6 +39,13 @@ def move():
         sc.left()
     return "done"
 
+@app.route('/angle', methods=["POST"])
+def move():
+    content = request.json
+    angle = content['angle']
+    sc.set_angle(int(angle))
+    return "done"
+
 @app.route('/start')
 def start():
     motor_control.start()
